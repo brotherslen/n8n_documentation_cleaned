@@ -1,0 +1,151 @@
+N8N DOCUMENTATION CLEANER - SETUP & USAGE GUIDE
+================================================
+
+Initial Setup (One-time only)
+============================
+
+Prerequisites:
+- Python 3.x installed (download from https://www.python.org/)
+- Git installed (download from https://git-scm.com/)
+- pip (comes with Python)
+
+
+STEP 1: Install Required Python Packages
+=========================================
+
+Open PowerShell and run:
+  pip install markdown beautifulsoup4 pyyaml
+
+
+STEP 2: Clone the N8N Documentation Repository
+===============================================
+
+Run these commands:
+  cd C:\\dev
+  git clone https://github.com/n8n-io/n8n-docs.git
+  cd n8n-docs
+
+
+STEP 3: Get the Fixed Cleaning Script
+======================================
+
+Option A - Clone the improved version (RECOMMENDED):
+  cd C:\\dev
+  git clone https://github.com/brotherslen/n8n_documentation_cleaned.git
+  cd n8n_documentation_cleaned
+  
+Then copy the extract_docs_improved.py to your n8n-docs folder:
+  copy extract_docs_improved.py ..\\n8n-docs\\
+
+Option B - Download the script directly:
+Visit: https://github.com/brotherslen/n8n_documentation_cleaned/blob/master/extract_docs_improved.py
+Click "Raw" button and save as extract_docs_improved.py to C:\\dev\\n8n-docs\\
+
+
+STEP 4: Run the Cleaning Script
+================================
+
+Navigate to the n8n-docs folder and run:
+  cd C:\\dev\\n8n-docs
+  python extract_docs_improved.py
+
+The output file will be created:
+  C:\\dev\\n8n-docs\\n8n_documentation_cleaned_improved.json
+
+
+HOW TO UPDATE WHEN N8N RELEASES NEW DOCUMENTATION
+==================================================
+
+STEP 1: Navigate to the n8n-docs Directory
+===========================================
+
+  cd C:\\dev\\n8n-docs
+
+
+STEP 2: Pull the Latest Changes from GitHub
+============================================
+
+  git pull
+
+This downloads any new or updated documentation files from:
+  https://github.com/n8n-io/n8n-docs
+
+
+STEP 3: Re-run the Cleaning Script
+===================================
+
+  python extract_docs_improved.py
+
+
+STEP 4: Access Your Updated JSON File
+======================================
+
+The cleaned documentation will be updated at:
+  C:\\dev\\n8n-docs\\n8n_documentation_cleaned_improved.json
+
+
+FILE LOCATIONS
+==============
+
+Documentation source:     C:\\dev\\n8n-docs\\docs\\
+Cleaning script:          C:\\dev\\n8n-docs\\extract_docs_improved.py
+Output JSON file:         C:\\dev\\n8n-docs\\n8n_documentation_cleaned_improved.json
+
+
+WHAT THE SCRIPT DOES
+====================
+
+1. Removes Markdown frontmatter (metadata)
+2. Removes code blocks
+3. Removes all URLs and links
+4. Removes MkDocs macros and directives
+5. Removes HTML comments
+6. Preserves Markdown tables in readable format
+7. Extracts clean text content
+8. Outputs as JSON with file paths and cleaned content
+
+
+KEY IMPROVEMENTS IN THIS VERSION
+================================
+
+This version fixes critical bugs in the original script:
+
+- Handles markdown files with malformed regex patterns (common in n8n docs)
+- Wraps all regex operations in try-except blocks
+- Replaces complex regex with simple string matching where possible
+- Successfully processes all ~650+ markdown files without crashing
+- Extracts clean, usable documentation for AI training
+
+
+TROUBLESHOOTING
+===============
+
+"Directory 'docs' not found":
+  Make sure the script is in the same folder as the 'docs' directory
+  Expected location: C:\\dev\\n8n-docs\\extract_docs_improved.py
+
+"ModuleNotFoundError: No module named 'markdown'":
+  Run: pip install markdown beautifulsoup4 pyyaml
+
+"Git not found":
+  Install Git from: https://git-scm.com/
+
+"Permission denied" errors:
+  Make sure the folder isn't locked by another program
+  Try closing any file browsers or editors
+
+
+SHARING WITH FRIENDS
+====================
+
+Share your improved version:
+  https://github.com/brotherslen/n8n_documentation_cleaned
+
+Or share this guide directly - it has everything needed!
+
+
+CREDITS
+=======
+
+Original script: https://github.com/msavich/n8n_documentation_cleaned
+Improvements and bugfixes: https://github.com/brotherslen/n8n_documentation_cleaned
